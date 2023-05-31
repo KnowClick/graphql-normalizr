@@ -1,4 +1,3 @@
-import { camelize, decamelize, pascalize, } from './humps'
 
 export function typeOf (value) {
   return Object.prototype.toString.call(value).slice(8, -1)
@@ -74,14 +73,6 @@ export function toLower (str) {
 
 export function toUpper (str) {
   return str.toUpperCase()
-}
-
-export const toCamel = camelize
-export const toSnake = decamelize
-export const toPascal = pascalize
-
-export function toKebab (str) {
-  return decamelize(str).replace(/_/g, '-')
 }
 
 export function isScalar (value) {

@@ -1,6 +1,5 @@
 import { visit, parse as gql, Kind, } from 'graphql'
 
-import { pluralize, } from './pluralize'
 import { hasField, createField, toLists, buildNoTypenameError, getIn, } from './helpers'
 import {
   map,
@@ -11,25 +10,11 @@ import {
   isObject,
   isEmpty,
   isScalar,
-  toLower,
-  toUpper,
-  toCamel,
-  toSnake,
-  toPascal,
-  toKebab,
 } from './utils'
 import { CACHE_READ_ERROR, CACHE_WRITE_ERROR, PAGEINFO_WITH_USE_CONNECTIONS_FALSE, } from './constants'
 
 const isProd = process?.env?.NODE_ENV === 'production'
 const warnings = {}
-const casingMethodMap = {
-  lower: toLower,
-  upper: toUpper,
-  kebab: toKebab,
-  camel: toCamel,
-  pascal: toPascal,
-  snake: toSnake,
-}
 
 export function GraphQLNormalizr ({
   idKey = 'id',
@@ -37,8 +22,6 @@ export function GraphQLNormalizr ({
   caching = false,
   lists = false,
   typenames = false,
-  plural = true,
-  casing = 'camel',
   useConnections = false,
   typePointers = false,
   exclude,
@@ -60,10 +43,7 @@ export function GraphQLNormalizr ({
   const cache = new Map()
 
   function caseTransform (type) {
-    let str = type
-    str = plural ? pluralize(str) : str
-    str = casingMethodMap[casing](str)
-    return str
+    return type;
   }
 
   function getEntityName (type, entities) {
