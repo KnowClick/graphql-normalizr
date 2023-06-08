@@ -1,5 +1,13 @@
 # **graphql-normalizr**
 
+KnowClick's fork of this library that normalizes graphql data. Note that we removed all the functionality related to changing type names in the normalized data.
+
+To publish:
+- Update the package.json version number.
+- `npm publish`
+
+What follows is the original readme.
+
 ![publish](https://github.com/monojack/graphql-normalizr/workflows/Publish/badge.svg)
 [![npm version](https://img.shields.io/npm/v/graphql-normalizr.svg)](https://www.npmjs.com/package/graphql-normalizr)
 [![npm downloads](https://img.shields.io/npm/dm/graphql-normalizr.svg)](https://www.npmjs.com/package/graphql-normalizr)
